@@ -1,0 +1,9 @@
+<li>
+
+  <%= link_to user.name, user %>
+    <%=user.address%>
+      <%=user.tags%>
+        <%= link_to "Edit", edit_user_path(user), class: "btn btn-large btn-primary" %>
+          <%= link_to "delete", user, method: :delete,
+          data: { confirm: "You sure?" }, class: "btn btn-large btn-primary" %>
+</li>

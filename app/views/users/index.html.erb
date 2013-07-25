@@ -1,14 +1,43 @@
 <% provide(:title, 'All users') %>
-<h1>All users</h1>
-<%= link_to "New Bookmark", signup_path, class: "btn btn-large btn-primary" %>
+<h1>All Bookmarks</h1>
+
+<%#= button_to "Create", :action => "new", :remote => true, :form => { "data-type" => "json" } %>
+<!--
 <ul class="users">
-  <% @users.each do |user| %>
+  <#% @users.each do |user| %>
     <li>
 
-      <%= link_to user.name, user %>
-      <%= link_to "Edit", edit_user_path(user), class: "btn btn-large btn-primary" %>
-      <%= link_to "delete", user, method: :delete,
+      <#%= link_to user.name, user %>
+      <#%=user.address%>
+      <#%=user.tags%>
+      <#%= link_to "Edit", edit_user_path(user), class: "btn btn-large btn-primary" %>
+      <#%= link_to "delete", user, method: :delete,
                   data: { confirm: "You sure?" }, class: "btn btn-large btn-primary" %>
     </li>
-  <% end %>
+  <#% end %>
+</ul>
+-->
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user, remote: true) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+
+      <%= f.label :tags %>
+      <%= f.text_field :tags %>
+
+
+      <%= f.submit class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<br>
+<%= link_to "New Bookmark", signup_path, class: "btn btn-large btn-primary",retmote:true %>
+<ul id="users">
+  <%= render @users %>
 </ul>
