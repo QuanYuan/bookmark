@@ -1,4 +1,4 @@
-this is to test new switched branch of static page
+readme of newOne branch here
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
